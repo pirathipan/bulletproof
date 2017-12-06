@@ -29,6 +29,7 @@ if (isset($_POST['signup'])) {
         $res = $stmts->execute();
         $stmts->close();
         $user_id = mysqli_insert_id($conn);
+        // verfition s'il est connecte
         if ($user_id > 0) {
             $_SESSION['user'] = $user_id;
             if (isset($_SESSION['user'])) {
@@ -36,6 +37,7 @@ if (isset($_POST['signup'])) {
                 exit;
             }
         } else {
+          // sinon il envoie le message erreur
             $errMSG = "Something went wrong, try again";
         }
     } else {
